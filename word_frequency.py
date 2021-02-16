@@ -17,10 +17,23 @@ def print_word_freq(file):
             if char in remove_punctuation:
                 read_file = read_file.replace(char, "")
 
+# # - remove "stop words" -- words used so frequently they are ignored
+        list_of_words = read_file.split(' ')
+        list_of_words_copy = list_of_words.copy()
+        number_of_words = {}
+        for word in list_of_words:
+            if word in STOP_WORDS:
+                list_of_words_copy.remove(word)
+            elif word not in number_of_words:
+                number_of_words_copy = list_of_words_copy.count(word)
+                number_of_words[word] = number_of_words_copy
+
+                print(number_of_words[word])
+        
+
     print(read_file)
 
 
-# # - remove "stop words" -- words used so frequently they are ignored
 # check each word and see if it is equal to one of the stop words/if it is in the list of stop words
 # - go through the file word by word and keep a count of how often each word is used
     # pass
